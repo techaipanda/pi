@@ -1,0 +1,230 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Pi 运行流程图",
+    "subtitle": "一次 agent loop 的完整数据流",
+    "locale": "zh-CN",
+    "output": "docs/runtime-flow.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/techaipanda/pi",
+      "provider": "github",
+      "link_mode": "web",
+      "revision": "04cf5f8ee2758ccf5ab09b2288764853ba585c58"
+    }
+  },
+  "lanes": [
+    { "id": "user", "label": "用户 / Session" },
+    { "id": "agent", "label": "Agent 运行时" },
+    { "id": "tools", "label": "工具 / 钩子", "variant": "exception" },
+    { "id": "models", "label": "Models & Provider" }
+  ],
+  "phases": [
+    { "id": "phase-intake", "label": "输入", "fromCol": 0, "toCol": 0 },
+    { "id": "phase-request", "label": "请求准备", "fromCol": 1, "toCol": 2, "variant": "emphasis" },
+    { "id": "phase-tool", "label": "工具执行", "fromCol": 3, "toCol": 4, "variant": "dashed" },
+    { "id": "phase-finish", "label": "结束与持久化", "fromCol": 5, "toCol": 5 }
+  ],
+  "groups": [
+    { "id": "loop-core", "label": "Agent loop 核心", "lane": "agent", "fromCol": 1, "toCol": 4, "variant": "emphasis" }
+  ],
+  "mainPath": [
+    "user-input",
+    "session-prompt",
+    "agent-loop",
+    "models-stream",
+    "provider-call",
+    "agent-decision",
+    "tools-execute",
+    "session-persist"
+  ],
+  "nodes": [
+    {
+      "id": "user-input",
+      "lane": "user",
+      "col": 0,
+      "type": "external",
+      "label": "用户输入",
+      "sublabel": "prompt",
+      "width": 130
+    },
+    {
+      "id": "session-prompt",
+      "lane": "user",
+      "col": 0,
+      "type": "database",
+      "label": "Session",
+      "sublabel": "append entry",
+      "tag": "JSONL",
+      "yOffset": 80,
+      "width": 130
+    },
+    {
+      "id": "session-persist",
+      "lane": "user",
+      "col": 5,
+      "type": "database",
+      "label": "持久化",
+      "sublabel": "append entry",
+      "width": 130
+    },
+    {
+      "id": "agent-loop",
+      "lane": "agent",
+      "col": 1,
+      "type": "backend",
+      "label": "Agent Loop",
+      "sublabel": "transform + 钩子",
+      "width": 150,
+      "sources": [{ "path": "packages/agent/src/agent-loop.ts", "line": 1, "label": "loop impl" }]
+    },
+    {
+      "id": "agent-decision",
+      "lane": "agent",
+      "col": 3,
+      "type": "backend",
+      "label": "stopReason",
+      "sublabel": "toolUse / stop / length",
+      "width": 130
+    },
+    {
+      "id": "agent-finish",
+      "lane": "agent",
+      "col": 4,
+      "type": "backend",
+      "label": "finishTurn",
+      "sublabel": "continue / end",
+      "width": 130
+    },
+    {
+      "id": "tools-execute",
+      "lane": "tools",
+      "col": 3,
+      "type": "messagebus",
+      "label": "Tool Registry",
+      "sublabel": "CodingTools · MCP · Codemode",
+      "tag": "校验 + 钩子",
+      "width": 150,
+      "sources": [{ "path": "packages/coding-agent/src/core/tools/index.ts", "line": 1, "label": "tools" }]
+    },
+    {
+      "id": "models-stream",
+      "lane": "models",
+      "col": 2,
+      "type": "backend",
+      "label": "Models.streamSimple",
+      "sublabel": "Auth + 事件流",
+      "width": 150,
+      "sources": [{ "path": "packages/ai/src/models.ts", "line": 1, "label": "models API" }]
+    },
+    {
+      "id": "provider-call",
+      "lane": "models",
+      "col": 2,
+      "type": "cloud",
+      "label": "Provider API",
+      "sublabel": "POST / SSE",
+      "yOffset": 120,
+      "width": 130
+    }
+  ],
+  "edges": [
+    {
+      "id": "user-session",
+      "from": "user-input",
+      "to": "session-prompt",
+      "label": "submit",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "session-agent",
+      "from": "session-prompt",
+      "to": "agent-loop",
+      "label": "prompt(ctx)",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "agent-models",
+      "from": "agent-loop",
+      "to": "models-stream",
+      "label": "streamSimple",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "models-provider",
+      "from": "models-stream",
+      "to": "provider-call",
+      "label": "HTTP POST",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "provider-decision",
+      "from": "provider-call",
+      "to": "agent-decision",
+      "label": "SSE events",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "decision-tools",
+      "from": "agent-decision",
+      "to": "tools-execute",
+      "label": "toolUse",
+      "role": "main"
+    },
+    {
+      "id": "tools-persist",
+      "from": "tools-execute",
+      "to": "session-persist",
+      "label": "toolResult",
+      "variant": "dashed",
+      "role": "main"
+    },
+    {
+      "id": "decision-finish",
+      "from": "agent-decision",
+      "to": "agent-finish",
+      "label": "其他",
+      "role": "main"
+    },
+    {
+      "id": "finish-persist",
+      "from": "agent-finish",
+      "to": "session-persist",
+      "label": "assistant msg",
+      "variant": "dashed",
+      "role": "main"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "核心循环",
+      "items": [
+        "AgentLoop = transformContext + convertToLlm + streamSimple + tool execution",
+        "runLoop 外层消化 follow-up 队列；内层消化 tool/steering"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "扩展点",
+      "items": [
+        "prepareRequest 注入上下文 / 工具",
+        "beforeToolCall 拦截 / afterToolCall 改写 / finishTurn 决定继续"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "异常路径",
+      "items": [
+        "stopReason=error/aborted → 持久化 partial + 进入 idle",
+        "abort 信号会中断流并把队列消息退回编辑器"
+      ]
+    }
+  ]
+}

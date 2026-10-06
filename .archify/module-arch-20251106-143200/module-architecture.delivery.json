@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "a895e550-1647-4b8f-95cf-fc7ef2c34325",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\candidate.json",
+  "output": "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\module-architecture.html",
+  "specification": {
+    "sha256": "db331375e06e235063032614ef7bc0ad29d71784e35c4f644908a83bca60a099",
+    "bytes": 7920
+  },
+  "artifact": {
+    "sha256": "e57f1e2b7ac96b1313d4f47c8e68a22dc24210eaf6374b9e9de6ad7f041088fb",
+    "bytes": 783280
+  }
+}

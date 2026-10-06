@@ -4,6 +4,8 @@
 
 涵盖三种主要运行模式：交互模式（TUI）、打印 / JSON 模式、RPC 模式。共有的核心是同一套 **agent loop**，不同的只是外壳。
 
+**交互式流程图**：[runtime-flow.html](runtime-flow.html) — 一次 agent loop 的泳道视图，从用户输入到 JSONL 持久化。
+
 ---
 
 ## 1. 全局视角：一次对话的端到端流程

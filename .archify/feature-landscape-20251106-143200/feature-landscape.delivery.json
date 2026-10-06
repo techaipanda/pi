@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "32f80f93-e5c7-4275-84c6-4f8a2f7fda1c",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "D:\\workspace\\git_workspace\\pi\\.archify\\feature-landscape-20251106-143200\\candidate.json",
+  "output": "D:\\workspace\\git_workspace\\pi\\.archify\\feature-landscape-20251106-143200\\feature-landscape.html",
+  "specification": {
+    "sha256": "4801fe056cb8f1c9013ee0a9b2bef7395494ce3e4a056a79a5ba381bec0eafd4",
+    "bytes": 7600
+  },
+  "artifact": {
+    "sha256": "cb1bf7b451cc97d61f428faa87f0e310a2c2729132d18fdffaeee3b53fa59187",
+    "bytes": 784584
+  }
+}

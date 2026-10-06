@@ -1,0 +1,1363 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "startedAt": "2026-10-06T06:50:11.508Z",
+  "specification": {
+    "path": "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\candidate.json",
+    "sha256": "db331375e06e235063032614ef7bc0ad29d71784e35c4f644908a83bca60a099",
+    "bytes": 7920
+  },
+  "artifact": {
+    "path": "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\module-architecture.html",
+    "sha256": "e57f1e2b7ac96b1313d4f47c8e68a22dc24210eaf6374b9e9de6ad7f041088fb",
+    "bytes": 783280
+  },
+  "stages": {
+    "validate": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": null,
+      "execution": "embedded-in-deliver",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:\\Users\\mslin\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "deliver",
+        "architecture",
+        "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\candidate.json",
+        "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\module-architecture.html",
+        "--quality",
+        "showcase",
+        "--repo-root",
+        "D:\\workspace\\git_workspace\\pi",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "db331375e06e235063032614ef7bc0ad29d71784e35c4f644908a83bca60a099",
+          "bytes": 7920
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 1100,
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:\\Users\\mslin\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "deliver",
+        "architecture",
+        "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\candidate.json",
+        "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\module-architecture.html",
+        "--quality",
+        "showcase",
+        "--repo-root",
+        "D:\\workspace\\git_workspace\\pi",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "a895e550-1647-4b8f-95cf-fc7ef2c34325",
+        "ok": true,
+        "command": "deliver",
+        "type": "architecture",
+        "input": "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\candidate.json",
+        "output": "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\module-architecture.html",
+        "specification": {
+          "sha256": "db331375e06e235063032614ef7bc0ad29d71784e35c4f644908a83bca60a099",
+          "bytes": 7920
+        },
+        "artifact": {
+          "sha256": "e57f1e2b7ac96b1313d4f47c8e68a22dc24210eaf6374b9e9de6ad7f041088fb",
+          "bytes": 783280
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        },
+        "evidence": {
+          "verified": true,
+          "repository": "https://github.com/techaipanda/pi",
+          "revision": "04cf5f8ee2758ccf5ab09b2288764853ba585c58",
+          "references": 12
+        },
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      }
+    },
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 288,
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:\\Users\\mslin\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "check",
+        "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\module-architecture.html",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\module-architecture.html",
+        "artifact": {
+          "sha256": "e57f1e2b7ac96b1313d4f47c8e68a22dc24210eaf6374b9e9de6ad7f041088fb",
+          "bytes": 783280
+        },
+        "checks": [
+          {
+            "name": "single_svg",
+            "ok": true,
+            "details": [
+              "found 1 <svg> block(s)"
+            ]
+          },
+          {
+            "name": "finite_svg",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "orthogonal_arrows",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "label_route_clearance",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_crossings",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_corridors",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "container_border_runs",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "route_rhythm",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "legend_clearance",
+            "ok": true,
+            "details": []
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "showcase",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 0
+          },
+          "metrics": {
+            "properCrossings": 0,
+            "resolvedCrossovers": 9,
+            "ambiguousCorridors": 0,
+            "arrowheadCollisions": 0,
+            "containerBorderRuns": 0,
+            "labelRouteClearanceIssues": 0,
+            "labelCanvasOverflowIssues": 0,
+            "minLabelRouteClearance": 5,
+            "desktopReadabilityIssues": 0,
+            "viewportHeightIssues": 0,
+            "minProjectedNodeTextPx": 8,
+            "maxBends": 6,
+            "routesOverSuggestedBends": 10,
+            "maxStretch": 1.386,
+            "routesOverSuggestedStretch": 1,
+            "minSegmentPx": 16,
+            "minInteriorSegmentPx": 16,
+            "shortSegmentCount": 0,
+            "shortEndpointSegmentCount": 0,
+            "shortInteriorSegmentCount": 0,
+            "microSegmentCount": 0
+          },
+          "suggestedLimits": {
+            "bendsPerRelationship": 2,
+            "stretch": 1.35,
+            "segmentPx": 16,
+            "microSegmentPx": 8
+          },
+          "routeReview": {
+            "crossings": [
+              {
+                "left": {
+                  "id": "ai-telemetry",
+                  "from": "ai",
+                  "to": "telemetry",
+                  "label": "依赖",
+                  "collectionIndex": 1,
+                  "artifactIndex": 2
+                },
+                "right": {
+                  "id": "server-chord",
+                  "from": "server",
+                  "to": "chord",
+                  "label": "依赖",
+                  "collectionIndex": 5,
+                  "artifactIndex": 6
+                },
+                "point": [
+                  304,
+                  184
+                ]
+              },
+              {
+                "left": {
+                  "id": "ai-telemetry",
+                  "from": "ai",
+                  "to": "telemetry",
+                  "label": "依赖",
+                  "collectionIndex": 1,
+                  "artifactIndex": 2
+                },
+                "right": {
+                  "id": "server-protocol",
+                  "from": "server",
+                  "to": "protocol",
+                  "label": "依赖",
+                  "collectionIndex": 6,
+                  "artifactIndex": 7
+                },
+                "point": [
+                  584,
+                  163
+                ]
+              },
+              {
+                "left": {
+                  "id": "ai-telemetry",
+                  "from": "ai",
+                  "to": "telemetry",
+                  "label": "依赖",
+                  "collectionIndex": 1,
+                  "artifactIndex": 2
+                },
+                "right": {
+                  "id": "client-protocol",
+                  "from": "client",
+                  "to": "protocol",
+                  "label": "依赖",
+                  "collectionIndex": 8,
+                  "artifactIndex": 9
+                },
+                "point": [
+                  467,
+                  163
+                ]
+              },
+              {
+                "left": {
+                  "id": "agent-ai",
+                  "from": "agent",
+                  "to": "ai",
+                  "label": "依赖",
+                  "collectionIndex": 2,
+                  "artifactIndex": 3
+                },
+                "right": {
+                  "id": "durable-ai",
+                  "from": "durable",
+                  "to": "ai",
+                  "label": "依赖",
+                  "collectionIndex": 4,
+                  "artifactIndex": 5
+                },
+                "point": [
+                  187.95,
+                  390
+                ],
+                "sharedNode": "ai"
+              },
+              {
+                "left": {
+                  "id": "agent-ai",
+                  "from": "agent",
+                  "to": "ai",
+                  "label": "依赖",
+                  "collectionIndex": 2,
+                  "artifactIndex": 3
+                },
+                "right": {
+                  "id": "ca-ai",
+                  "from": "coding-agent",
+                  "to": "ai",
+                  "label": "依赖",
+                  "collectionIndex": 10,
+                  "artifactIndex": 11
+                },
+                "point": [
+                  194,
+                  390
+                ],
+                "sharedNode": "ai"
+              },
+              {
+                "left": {
+                  "id": "server-protocol",
+                  "from": "server",
+                  "to": "protocol",
+                  "label": "依赖",
+                  "collectionIndex": 6,
+                  "artifactIndex": 7
+                },
+                "right": {
+                  "id": "client-protocol",
+                  "from": "client",
+                  "to": "protocol",
+                  "label": "依赖",
+                  "collectionIndex": 8,
+                  "artifactIndex": 9
+                },
+                "point": [
+                  584,
+                  219.5
+                ],
+                "sharedNode": "protocol"
+              },
+              {
+                "left": {
+                  "id": "server-protocol",
+                  "from": "server",
+                  "to": "protocol",
+                  "label": "依赖",
+                  "collectionIndex": 6,
+                  "artifactIndex": 7
+                },
+                "right": {
+                  "id": "ca-codemode",
+                  "from": "coding-agent",
+                  "to": "codemode",
+                  "label": "依赖",
+                  "collectionIndex": 13,
+                  "artifactIndex": 14
+                },
+                "point": [
+                  563,
+                  660
+                ]
+              },
+              {
+                "left": {
+                  "id": "client-protocol",
+                  "from": "client",
+                  "to": "protocol",
+                  "label": "依赖",
+                  "collectionIndex": 8,
+                  "artifactIndex": 9
+                },
+                "right": {
+                  "id": "ca-mcp",
+                  "from": "coding-agent",
+                  "to": "mcp",
+                  "label": "依赖",
+                  "collectionIndex": 12,
+                  "artifactIndex": 13
+                },
+                "point": [
+                  637,
+                  388.9999999999998
+                ]
+              },
+              {
+                "left": {
+                  "id": "ca-ai",
+                  "from": "coding-agent",
+                  "to": "ai",
+                  "label": "依赖",
+                  "collectionIndex": 10,
+                  "artifactIndex": 11
+                },
+                "right": {
+                  "id": "ca-agent",
+                  "from": "coding-agent",
+                  "to": "agent",
+                  "label": "依赖",
+                  "collectionIndex": 11,
+                  "artifactIndex": 12
+                },
+                "point": [
+                  399.7999999999993,
+                  775.9999999999998
+                ],
+                "sharedNode": "coding-agent"
+              }
+            ],
+            "detours": [
+              {
+                "relationship": {
+                  "id": "ai-telemetry",
+                  "from": "ai",
+                  "to": "telemetry",
+                  "label": "依赖",
+                  "collectionIndex": 1,
+                  "artifactIndex": 2
+                },
+                "bends": 4,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "durable-chord",
+                  "from": "durable",
+                  "to": "chord",
+                  "label": "依赖",
+                  "collectionIndex": 3,
+                  "artifactIndex": 4
+                },
+                "bends": 3,
+                "stretch": 1.141,
+                "directCorridorBlockers": [
+                  {
+                    "id": "ai",
+                    "label": "@earendil-works/pi-ai",
+                    "box": [
+                      80,
+                      260,
+                      200,
+                      80
+                    ]
+                  }
+                ]
+              },
+              {
+                "relationship": {
+                  "id": "durable-ai",
+                  "from": "durable",
+                  "to": "ai",
+                  "label": "依赖",
+                  "collectionIndex": 4,
+                  "artifactIndex": 5
+                },
+                "bends": 4,
+                "stretch": 1.112
+              },
+              {
+                "relationship": {
+                  "id": "server-chord",
+                  "from": "server",
+                  "to": "chord",
+                  "label": "依赖",
+                  "collectionIndex": 5,
+                  "artifactIndex": 6
+                },
+                "bends": 6,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "client-chord",
+                  "from": "client",
+                  "to": "chord",
+                  "label": "依赖",
+                  "collectionIndex": 7,
+                  "artifactIndex": 8
+                },
+                "bends": 3,
+                "stretch": 1.077
+              },
+              {
+                "relationship": {
+                  "id": "client-protocol",
+                  "from": "client",
+                  "to": "protocol",
+                  "label": "依赖",
+                  "collectionIndex": 8,
+                  "artifactIndex": 9
+                },
+                "bends": 4,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "ca-chord",
+                  "from": "coding-agent",
+                  "to": "chord",
+                  "label": "依赖",
+                  "collectionIndex": 9,
+                  "artifactIndex": 10
+                },
+                "bends": 4,
+                "stretch": 1.276
+              },
+              {
+                "relationship": {
+                  "id": "ca-ai",
+                  "from": "coding-agent",
+                  "to": "ai",
+                  "label": "依赖",
+                  "collectionIndex": 10,
+                  "artifactIndex": 11
+                },
+                "bends": 4,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "ca-mcp",
+                  "from": "coding-agent",
+                  "to": "mcp",
+                  "label": "依赖",
+                  "collectionIndex": 12,
+                  "artifactIndex": 13
+                },
+                "bends": 4,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "ca-codemode",
+                  "from": "coding-agent",
+                  "to": "codemode",
+                  "label": "依赖",
+                  "collectionIndex": 13,
+                  "artifactIndex": 14
+                },
+                "bends": 4,
+                "stretch": 1.386,
+                "directCorridorBlockers": [
+                  {
+                    "id": "server",
+                    "label": "@earendil-works/pi-server",
+                    "box": [
+                      360,
+                      620,
+                      200,
+                      80
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "leadingSpace": {
+            "measured": true,
+            "emptyTopPx": 50,
+            "emptyTopRatio": 0.051,
+            "occupiedTop": 50,
+            "viewBoxTop": 0,
+            "canvasHeight": 972,
+            "typicalNodeHeight": 80,
+            "reviewSuggested": false
+          },
+          "desktopReadability": {
+            "budgetBasis": "legacy-930",
+            "readerContract": "declared-wide-v1",
+            "availableDiagramWidth": 930,
+            "actualBudgetPx": 930,
+            "limit": "legacy",
+            "requestedTargetPx": 7.5,
+            "requestedTargetMet": true,
+            "hardFloorPx": 6,
+            "hardFloorMet": true,
+            "minimumOwner": {
+              "kind": "edge",
+              "id": "protocol-chord",
+              "from": "protocol",
+              "to": "chord"
+            },
+            "minimumSourceTextPx": 8,
+            "minimumProjectedTextPx": 8,
+            "semanticTextCount": 44
+          },
+          "issues": []
+        },
+        "provenance": "current",
+        "deliveryReceiptId": "a895e550-1647-4b8f-95cf-fc7ef2c34325"
+      }
+    },
+    "browser-check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 1363,
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:\\Users\\mslin\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "browser-check",
+        "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\module-architecture.html",
+        "--json",
+        "--require-provenance"
+      ],
+      "execution": "in-process",
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "browser-check",
+        "evidenceKind": "automated-browser",
+        "status": "pass",
+        "visualReview": "not-requested",
+        "provenance": "current",
+        "deliveryReceiptId": "a895e550-1647-4b8f-95cf-fc7ef2c34325",
+        "artifact": {
+          "path": "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\module-architecture.html",
+          "sha256": "e57f1e2b7ac96b1313d4f47c8e68a22dc24210eaf6374b9e9de6ad7f041088fb",
+          "bytes": 783280
+        },
+        "state": {
+          "detail": "read",
+          "motion": "still"
+        },
+        "chrome": {
+          "status": "available",
+          "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+        },
+        "diagnostics": [],
+        "containment": {
+          "status": "pass",
+          "policy": "fit-or-reader-declared-readable-vertical-scroll",
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "theme": "light",
+              "innerWidth": 1440,
+              "innerHeight": 900,
+              "scrollWidth": 1440,
+              "scrollHeight": 978,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 766,
+              "pageComposition": {
+                "bodyPaddingPx": 12,
+                "headerPx": 78,
+                "diagramChromePx": 78,
+                "svgPx": 810,
+                "cardsPx": 0,
+                "viewBoxHeight": 972
+              },
+              "viewBoxWidth": 919,
+              "minimumProjectedNodeTextPx": 6.668117519042437,
+              "minimumProjectedNonEdgeTextPx": 7.501632208922742,
+              "minimumProjectedEdgeTextPx": 6.668117519042437,
+              "minimumProjectedNodeText": "依赖",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "protocol-chord",
+                "from": "protocol",
+                "to": "chord"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "theme": "light",
+              "innerWidth": 1600,
+              "innerHeight": 1000,
+              "scrollWidth": 1600,
+              "scrollHeight": 1044,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 766,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 86,
+                "diagramChromePx": 84,
+                "svgPx": 810,
+                "cardsPx": 0,
+                "viewBoxHeight": 972
+              },
+              "viewBoxWidth": 919,
+              "minimumProjectedNodeTextPx": 6.668117519042437,
+              "minimumProjectedNonEdgeTextPx": 7.501632208922742,
+              "minimumProjectedEdgeTextPx": 6.668117519042437,
+              "minimumProjectedNodeText": "依赖",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "protocol-chord",
+                "from": "protocol",
+                "to": "chord"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "theme": "light",
+              "innerWidth": 1920,
+              "innerHeight": 1080,
+              "scrollWidth": 1920,
+              "scrollHeight": 1080,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 789,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 86,
+                "diagramChromePx": 84,
+                "svgPx": 835,
+                "cardsPx": 0,
+                "viewBoxHeight": 972
+              },
+              "viewBoxWidth": 919,
+              "minimumProjectedNodeTextPx": 6.868335146898803,
+              "minimumProjectedNonEdgeTextPx": 7.7268770402611535,
+              "minimumProjectedEdgeTextPx": 6.868335146898803,
+              "minimumProjectedNodeText": "依赖",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "protocol-chord",
+                "from": "protocol",
+                "to": "chord"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "theme": "light",
+              "innerWidth": 2048,
+              "innerHeight": 1320,
+              "scrollWidth": 2048,
+              "scrollHeight": 1320,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1049,
+              "diagramWidth": 999,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 94,
+                "diagramChromePx": 94,
+                "svgPx": 1057,
+                "cardsPx": 0,
+                "viewBoxHeight": 972
+              },
+              "viewBoxWidth": 919,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 9,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "依赖",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "protocol-chord",
+                "from": "protocol",
+                "to": "chord"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 44,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            }
+          ]
+        },
+        "themeStates": {
+          "status": "pass",
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 1440,
+              "height": 900,
+              "requestedTheme": "dark",
+              "resolvedTheme": "dark",
+              "ok": true
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "requestedTheme": "dark",
+              "resolvedTheme": "dark",
+              "ok": true
+            }
+          ]
+        },
+        "readability": {
+          "status": "pass",
+          "minimumProjectedNodeTextPx": 6,
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "theme": "light",
+              "innerWidth": 1440,
+              "innerHeight": 900,
+              "scrollWidth": 1440,
+              "scrollHeight": 978,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 766,
+              "pageComposition": {
+                "bodyPaddingPx": 12,
+                "headerPx": 78,
+                "diagramChromePx": 78,
+                "svgPx": 810,
+                "cardsPx": 0,
+                "viewBoxHeight": 972
+              },
+              "viewBoxWidth": 919,
+              "minimumProjectedNodeTextPx": 6.668117519042437,
+              "minimumProjectedNonEdgeTextPx": 7.501632208922742,
+              "minimumProjectedEdgeTextPx": 6.668117519042437,
+              "minimumProjectedNodeText": "依赖",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "protocol-chord",
+                "from": "protocol",
+                "to": "chord"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "theme": "light",
+              "innerWidth": 1600,
+              "innerHeight": 1000,
+              "scrollWidth": 1600,
+              "scrollHeight": 1044,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 766,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 86,
+                "diagramChromePx": 84,
+                "svgPx": 810,
+                "cardsPx": 0,
+                "viewBoxHeight": 972
+              },
+              "viewBoxWidth": 919,
+              "minimumProjectedNodeTextPx": 6.668117519042437,
+              "minimumProjectedNonEdgeTextPx": 7.501632208922742,
+              "minimumProjectedEdgeTextPx": 6.668117519042437,
+              "minimumProjectedNodeText": "依赖",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "protocol-chord",
+                "from": "protocol",
+                "to": "chord"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "theme": "light",
+              "innerWidth": 1920,
+              "innerHeight": 1080,
+              "scrollWidth": 1920,
+              "scrollHeight": 1080,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 789,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 86,
+                "diagramChromePx": 84,
+                "svgPx": 835,
+                "cardsPx": 0,
+                "viewBoxHeight": 972
+              },
+              "viewBoxWidth": 919,
+              "minimumProjectedNodeTextPx": 6.868335146898803,
+              "minimumProjectedNonEdgeTextPx": 7.7268770402611535,
+              "minimumProjectedEdgeTextPx": 6.868335146898803,
+              "minimumProjectedNodeText": "依赖",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "protocol-chord",
+                "from": "protocol",
+                "to": "chord"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "theme": "light",
+              "innerWidth": 2048,
+              "innerHeight": 1320,
+              "scrollWidth": 2048,
+              "scrollHeight": 1320,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1049,
+              "diagramWidth": 999,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 94,
+                "diagramChromePx": 94,
+                "svgPx": 1057,
+                "cardsPx": 0,
+                "viewBoxHeight": 972
+              },
+              "viewBoxWidth": 919,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 9,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "依赖",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "protocol-chord",
+                "from": "protocol",
+                "to": "chord"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 44,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            }
+          ]
+        },
+        "viewerChrome": {
+          "status": "pass",
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "theme": "light",
+              "innerWidth": 1440,
+              "innerHeight": 900,
+              "scrollWidth": 1440,
+              "scrollHeight": 978,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 766,
+              "pageComposition": {
+                "bodyPaddingPx": 12,
+                "headerPx": 78,
+                "diagramChromePx": 78,
+                "svgPx": 810,
+                "cardsPx": 0,
+                "viewBoxHeight": 972
+              },
+              "viewBoxWidth": 919,
+              "minimumProjectedNodeTextPx": 6.668117519042437,
+              "minimumProjectedNonEdgeTextPx": 7.501632208922742,
+              "minimumProjectedEdgeTextPx": 6.668117519042437,
+              "minimumProjectedNodeText": "依赖",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "protocol-chord",
+                "from": "protocol",
+                "to": "chord"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "theme": "light",
+              "innerWidth": 1600,
+              "innerHeight": 1000,
+              "scrollWidth": 1600,
+              "scrollHeight": 1044,
+              "overflowX": false,
+              "overflowY": true,
+              "verticalScrollAccepted": true,
+              "overflowDisposition": "readable-vertical-scroll",
+              "readerLayout": "adaptive",
+              "readerOverflow": "authored",
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 766,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 86,
+                "diagramChromePx": 84,
+                "svgPx": 810,
+                "cardsPx": 0,
+                "viewBoxHeight": 972
+              },
+              "viewBoxWidth": 919,
+              "minimumProjectedNodeTextPx": 6.668117519042437,
+              "minimumProjectedNonEdgeTextPx": 7.501632208922742,
+              "minimumProjectedEdgeTextPx": 6.668117519042437,
+              "minimumProjectedNodeText": "依赖",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "protocol-chord",
+                "from": "protocol",
+                "to": "chord"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "theme": "light",
+              "innerWidth": 1920,
+              "innerHeight": 1080,
+              "scrollWidth": 1920,
+              "scrollHeight": 1080,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 960,
+              "diagramWidth": 789,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 86,
+                "diagramChromePx": 84,
+                "svgPx": 835,
+                "cardsPx": 0,
+                "viewBoxHeight": 972
+              },
+              "viewBoxWidth": 919,
+              "minimumProjectedNodeTextPx": 6.868335146898803,
+              "minimumProjectedNonEdgeTextPx": 7.7268770402611535,
+              "minimumProjectedEdgeTextPx": 6.868335146898803,
+              "minimumProjectedNodeText": "依赖",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "protocol-chord",
+                "from": "protocol",
+                "to": "chord"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "theme": "light",
+              "innerWidth": 2048,
+              "innerHeight": 1320,
+              "scrollWidth": 2048,
+              "scrollHeight": 1320,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1049,
+              "diagramWidth": 999,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 94,
+                "diagramChromePx": 94,
+                "svgPx": 1057,
+                "cardsPx": 0,
+                "viewBoxHeight": 972
+              },
+              "viewBoxWidth": 919,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 9,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "依赖",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "protocol-chord",
+                "from": "protocol",
+                "to": "chord"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 44,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            }
+          ]
+        },
+        "captures": {
+          "status": "not-requested",
+          "screenshots": [],
+          "contactSheet": null
+        },
+        "sidecars": {
+          "receipt": "module-architecture.browser-check.json",
+          "files": []
+        }
+      }
+    }
+  },
+  "diagnostics": [],
+  "evidence": {
+    "receipt": "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\module-architecture.finalize.json",
+    "summaryReceipt": "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\module-architecture.finalize-summary.json",
+    "browserCheckReceipt": "D:\\workspace\\git_workspace\\pi\\.archify\\module-arch-20251106-143200\\module-architecture.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "finishedAt": "2026-10-06T06:50:14.830Z",
+  "durationMs": 3322,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.0.1",
+    "availableVersion": "3.0.1",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-06T06:09:22.451Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

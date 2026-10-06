@@ -4,6 +4,8 @@
 
 仓库 `packages/` 目录下的 15 个包在功能上分属 5 层：基础设施、模型与协议、Agent 运行时、嵌入式运行时、终端 UI 与 CLI。每一层有明确的依赖方向 — **永远只依赖更低层，不反向依赖**。
 
+**交互式架构图**：[module-architecture.html](module-architecture.html) — 12 个 npm 包按 5 层组织的依赖连线视图。
+
 ---
 
 ## 1. 包清单速览

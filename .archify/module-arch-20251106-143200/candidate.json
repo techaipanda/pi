@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Pi 模块架构图",
+    "subtitle": "monorepo 包分层与依赖方向",
+    "locale": "zh-CN",
+    "output": "docs/module-architecture.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/techaipanda/pi",
+      "provider": "github",
+      "link_mode": "web",
+      "revision": "04cf5f8ee2758ccf5ab09b2288764853ba585c58"
+    }
+  },
+  "components": [
+    {
+      "id": "chord",
+      "type": "backend",
+      "label": "@earendil-works/chord",
+      "sublabel": "facets / replicated state",
+      "tag": "基础设施",
+      "pos": [80, 80],
+      "size": [200, 80],
+      "sources": [{ "path": "packages/chord/package.json", "line": 1, "label": "package manifest" }]
+    },
+    {
+      "id": "protocol",
+      "type": "messagebus",
+      "label": "@earendil-works/pi-protocol",
+      "sublabel": "CBOR 帧 / 路由",
+      "tag": "基础设施",
+      "pos": [360, 80],
+      "size": [200, 80],
+      "sources": [{ "path": "packages/protocol/package.json", "line": 1, "label": "package manifest" }]
+    },
+    {
+      "id": "telemetry",
+      "type": "cloud",
+      "label": "@earendil-works/pi-telemetry",
+      "sublabel": "供应商中立合约",
+      "tag": "基础设施",
+      "pos": [640, 80],
+      "size": [200, 80],
+      "sources": [{ "path": "packages/telemetry/package.json", "line": 1, "label": "package manifest" }]
+    },
+    {
+      "id": "ai",
+      "type": "backend",
+      "label": "@earendil-works/pi-ai",
+      "sublabel": "30+ LLM 统一 API",
+      "tag": "模型层",
+      "pos": [80, 260],
+      "size": [200, 80],
+      "sources": [{ "path": "packages/ai/package.json", "line": 1, "label": "package manifest" }]
+    },
+    {
+      "id": "codemode",
+      "type": "security",
+      "label": "@earendil-works/pi-codemode",
+      "sublabel": "QuickJS 沙箱",
+      "tag": "模型层",
+      "pos": [360, 260],
+      "size": [200, 80],
+      "sources": [{ "path": "packages/codemode/package.json", "line": 1, "label": "package manifest" }]
+    },
+    {
+      "id": "mcp",
+      "type": "messagebus",
+      "label": "@earendil-works/pi-mcp",
+      "sublabel": "MCP 客户端",
+      "tag": "模型层",
+      "pos": [640, 260],
+      "size": [200, 80],
+      "sources": [{ "path": "packages/mcp/package.json", "line": 1, "label": "package manifest" }]
+    },
+    {
+      "id": "agent",
+      "type": "backend",
+      "label": "@earendil-works/pi-agent-core",
+      "sublabel": "Stateful Agent",
+      "tag": "Agent 运行时",
+      "pos": [220, 440],
+      "size": [200, 80],
+      "sources": [{ "path": "packages/agent/package.json", "line": 1, "label": "package manifest" }]
+    },
+    {
+      "id": "durable",
+      "type": "database",
+      "label": "@earendil-works/pi-durable",
+      "sublabel": "Durable Harness + Storage",
+      "tag": "嵌入式运行时",
+      "pos": [80, 620],
+      "size": [200, 80],
+      "sources": [{ "path": "packages/durable/package.json", "line": 1, "label": "package manifest" }]
+    },
+    {
+      "id": "server",
+      "type": "backend",
+      "label": "@earendil-works/pi-server",
+      "sublabel": "CBOR 路由服务",
+      "tag": "嵌入式运行时",
+      "pos": [360, 620],
+      "size": [200, 80],
+      "sources": [{ "path": "packages/server/package.json", "line": 1, "label": "package manifest" }]
+    },
+    {
+      "id": "client",
+      "type": "frontend",
+      "label": "@earendil-works/pi-client",
+      "sublabel": "远端会话客户端",
+      "tag": "嵌入式运行时",
+      "pos": [640, 620],
+      "size": [200, 80],
+      "sources": [{ "path": "packages/client/package.json", "line": 1, "label": "package manifest" }]
+    },
+    {
+      "id": "tui",
+      "type": "frontend",
+      "label": "@earendil-works/pi-tui",
+      "sublabel": "差分渲染 UI 框架",
+      "tag": "产品层",
+      "pos": [80, 800],
+      "size": [200, 80],
+      "sources": [{ "path": "packages/tui/package.json", "line": 1, "label": "package manifest" }]
+    },
+    {
+      "id": "coding-agent",
+      "type": "backend",
+      "label": "@earendil-works/pi-coding-agent",
+      "sublabel": "Pi CLI + 扩展",
+      "tag": "产品层",
+      "pos": [360, 800],
+      "size": [200, 80],
+      "sources": [{ "path": "packages/coding-agent/package.json", "line": 1, "label": "package manifest" }]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "L0 · 通用基础设施",
+      "wraps": ["chord", "protocol", "telemetry"]
+    },
+    {
+      "kind": "region",
+      "label": "L1 · 模型 & 沙箱原语",
+      "wraps": ["ai", "codemode", "mcp"]
+    },
+    {
+      "kind": "region",
+      "label": "L2 · Agent 运行时",
+      "wraps": ["agent"]
+    },
+    {
+      "kind": "region",
+      "label": "L3 · 嵌入式运行时",
+      "wraps": ["durable", "server", "client"]
+    },
+    {
+      "kind": "region",
+      "label": "L4 · 产品层",
+      "wraps": ["tui", "coding-agent"]
+    }
+  ],
+  "connections": [
+    {
+      "id": "protocol-chord",
+      "from": "protocol",
+      "to": "chord",
+      "label": "依赖",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ai-telemetry",
+      "from": "ai",
+      "to": "telemetry",
+      "label": "依赖",
+      "variant": "dashed"
+    },
+    {
+      "id": "agent-ai",
+      "from": "agent",
+      "to": "ai",
+      "label": "依赖",
+      "variant": "emphasis"
+    },
+    {
+      "id": "durable-chord",
+      "from": "durable",
+      "to": "chord",
+      "label": "依赖",
+      "variant": "dashed"
+    },
+    {
+      "id": "durable-ai",
+      "from": "durable",
+      "to": "ai",
+      "label": "依赖",
+      "variant": "emphasis"
+    },
+    {
+      "id": "server-chord",
+      "from": "server",
+      "to": "chord",
+      "label": "依赖",
+      "variant": "dashed"
+    },
+    {
+      "id": "server-protocol",
+      "from": "server",
+      "to": "protocol",
+      "label": "依赖",
+      "variant": "emphasis"
+    },
+    {
+      "id": "client-chord",
+      "from": "client",
+      "to": "chord",
+      "label": "依赖",
+      "variant": "dashed"
+    },
+    {
+      "id": "client-protocol",
+      "from": "client",
+      "to": "protocol",
+      "label": "依赖",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ca-chord",
+      "from": "coding-agent",
+      "to": "chord",
+      "label": "依赖",
+      "variant": "dashed"
+    },
+    {
+      "id": "ca-ai",
+      "from": "coding-agent",
+      "to": "ai",
+      "label": "依赖",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ca-agent",
+      "from": "coding-agent",
+      "to": "agent",
+      "label": "依赖",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ca-mcp",
+      "from": "coding-agent",
+      "to": "mcp",
+      "label": "依赖",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ca-codemode",
+      "from": "coding-agent",
+      "to": "codemode",
+      "label": "依赖",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ca-tui",
+      "from": "coding-agent",
+      "to": "tui",
+      "label": "依赖",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "依赖方向",
+      "items": [
+        "永远从更高层指向更低层，禁止反向依赖",
+        "chord / protocol / telemetry / codemode / mcp / tui 是基础设施层，可被单独消费"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "分层职责",
+      "items": [
+        "L0 基础设施原语",
+        "L1 模型与沙箱封装",
+        "L2 Agent 调度",
+        "L3 跨进程运行时",
+        "L4 产品层 CLI/UI"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "产品层收敛",
+      "items": [
+        "pi-coding-agent 聚合 chord / agent / ai / mcp / codemode / tui",
+        "其他包都通过 npm 单包发布供嵌入者使用"
+      ]
+    }
+  ]
+}

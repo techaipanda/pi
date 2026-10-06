@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Pi 功能全景图",
+    "subtitle": "面向使用者 / 扩展者 / 嵌入者的能力域",
+    "locale": "zh-CN",
+    "output": "docs/feature-landscape.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/techaipanda/pi",
+      "provider": "github",
+      "link_mode": "web",
+      "revision": "04cf5f8ee2758ccf5ab09b2288764853ba585c58"
+    }
+  },
+  "components": [
+    {
+      "id": "user-role",
+      "type": "external",
+      "label": "使用者",
+      "sublabel": "终端 / 脚本 / 应用",
+      "pos": [60, 60],
+      "size": [160, 80]
+    },
+    {
+      "id": "extender-role",
+      "type": "external",
+      "label": "扩展者",
+      "sublabel": "npm 包 / SKILL.md",
+      "pos": [300, 60],
+      "size": [160, 80]
+    },
+    {
+      "id": "embedder-role",
+      "type": "external",
+      "label": "嵌入者",
+      "sublabel": "SDK / 服务",
+      "pos": [540, 60],
+      "size": [160, 80]
+    },
+    {
+      "id": "interactive",
+      "type": "frontend",
+      "label": "交互界面",
+      "sublabel": "TUI / Print / JSON / RPC / SDK",
+      "pos": [60, 240],
+      "size": [160, 80],
+      "sources": [{ "path": "packages/coding-agent/src/modes/index.ts", "line": 1, "label": "modes entry" }]
+    },
+    {
+      "id": "tools",
+      "type": "messagebus",
+      "label": "工具系统",
+      "sublabel": "CodingTools + MCP + Codemode",
+      "pos": [300, 240],
+      "size": [160, 80],
+      "sources": [{ "path": "packages/coding-agent/src/core/tools/index.ts", "line": 1, "label": "tool registry" }]
+    },
+    {
+      "id": "protocol",
+      "type": "messagebus",
+      "label": "通信与协议",
+      "sublabel": "CBOR / Unix Socket / Chord",
+      "pos": [540, 240],
+      "size": [160, 80],
+      "sources": [{ "path": "packages/server/src/index.ts", "line": 1, "label": "server entry" }]
+    },
+    {
+      "id": "context",
+      "type": "database",
+      "label": "上下文与会话",
+      "sublabel": "会话树 / 压缩 / 队列",
+      "pos": [60, 420],
+      "size": [160, 80],
+      "sources": [{ "path": "packages/coding-agent/src/core/session-manager.ts", "line": 1, "label": "session" }]
+    },
+    {
+      "id": "providers",
+      "type": "cloud",
+      "label": "模型供应商",
+      "sublabel": "30+ LLM + OAuth",
+      "pos": [300, 420],
+      "size": [160, 80],
+      "sources": [{ "path": "packages/ai/src/providers/anthropic.ts", "line": 1, "label": "provider impl" }]
+    },
+    {
+      "id": "persistence",
+      "type": "database",
+      "label": "持久化与恢复",
+      "sublabel": "JSONL / Durable / Subagent",
+      "pos": [540, 420],
+      "size": [160, 80],
+      "sources": [{ "path": "packages/durable/src/index.ts", "line": 1, "label": "harness entry" }]
+    },
+    {
+      "id": "agent-loop",
+      "type": "backend",
+      "label": "Agent Loop",
+      "sublabel": "事件流 / 钩子 / 状态机",
+      "pos": [60, 600],
+      "size": [160, 80],
+      "sources": [{ "path": "packages/agent/src/agent-loop.ts", "line": 1, "label": "loop impl" }]
+    },
+    {
+      "id": "extensibility",
+      "type": "security",
+      "label": "可扩展资源",
+      "sublabel": "Extension / Skill / Theme",
+      "pos": [300, 600],
+      "size": [160, 80],
+      "sources": [{ "path": "packages/coding-agent/src/core/extensions/index.ts", "line": 1, "label": "extensions" }]
+    },
+    {
+      "id": "tui",
+      "type": "frontend",
+      "label": "终端 UI 框架",
+      "sublabel": "差分渲染 / 同步输出",
+      "pos": [540, 600],
+      "size": [160, 80],
+      "sources": [{ "path": "packages/tui/src/index.ts", "line": 1, "label": "tui entry" }]
+    },
+    {
+      "id": "telemetry",
+      "type": "cloud",
+      "label": "遥测",
+      "sublabel": "合约 + 参考实现",
+      "pos": [60, 780],
+      "size": [160, 80],
+      "sources": [{ "path": "packages/telemetry/src/index.ts", "line": 1, "label": "telemetry" }]
+    },
+    {
+      "id": "security",
+      "type": "security",
+      "label": "安全与隔离",
+      "sublabel": "项目信任 / Gondolin",
+      "pos": [300, 780],
+      "size": [160, 80]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "使用者面",
+      "wraps": ["user-role"]
+    },
+    {
+      "kind": "region",
+      "label": "扩展者面",
+      "wraps": ["extender-role"]
+    },
+    {
+      "kind": "region",
+      "label": "嵌入者面",
+      "wraps": ["embedder-role"]
+    }
+  ],
+  "connections": [
+    {
+      "id": "user-interactive",
+      "from": "user-role",
+      "to": "interactive",
+      "label": "使用"
+    },
+    {
+      "id": "user-providers",
+      "from": "user-role",
+      "to": "providers",
+      "label": "选择"
+    },
+    {
+      "id": "user-context",
+      "from": "user-role",
+      "to": "context",
+      "label": "编辑"
+    },
+    {
+      "id": "user-persistence",
+      "from": "user-role",
+      "to": "persistence",
+      "label": "恢复"
+    },
+    {
+      "id": "extender-tools",
+      "from": "extender-role",
+      "to": "tools",
+      "label": "MCP 工具",
+      "variant": "dashed"
+    },
+    {
+      "id": "extender-extensibility",
+      "from": "extender-role",
+      "to": "extensibility",
+      "label": "扩展"
+    },
+    {
+      "id": "extender-protocol",
+      "from": "extender-role",
+      "to": "protocol",
+      "label": "接入"
+    },
+    {
+      "id": "embedder-protocol",
+      "from": "embedder-role",
+      "to": "protocol",
+      "label": "远程接入"
+    },
+    {
+      "id": "embedder-persistence",
+      "from": "embedder-role",
+      "to": "persistence",
+      "label": "嵌入 Harness"
+    },
+    {
+      "id": "embedder-agent-loop",
+      "from": "embedder-role",
+      "to": "agent-loop",
+      "label": "控制"
+    },
+    {
+      "id": "interactive-agent-loop",
+      "from": "interactive",
+      "to": "agent-loop",
+      "label": "驱动"
+    },
+    {
+      "id": "providers-agent-loop",
+      "from": "providers",
+      "to": "agent-loop",
+      "label": "调用"
+    },
+    {
+      "id": "tools-agent-loop",
+      "from": "tools",
+      "to": "agent-loop",
+      "label": "执行"
+    },
+    {
+      "id": "persistence-agent-loop",
+      "from": "persistence",
+      "to": "agent-loop",
+      "label": "持久化"
+    },
+    {
+      "id": "context-agent-loop",
+      "from": "context",
+      "to": "agent-loop",
+      "label": "上下文"
+    },
+    {
+      "id": "extensibility-tools",
+      "from": "extensibility",
+      "to": "tools",
+      "label": "注册"
+    },
+    {
+      "id": "protocol-persistence",
+      "from": "protocol",
+      "to": "persistence",
+      "label": "路由"
+    },
+    {
+      "id": "telemetry-agent-loop",
+      "from": "telemetry",
+      "to": "agent-loop",
+      "label": "观测"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "使用者面",
+      "items": [
+        "TUI / Print / JSON / RPC / SDK 五种入口",
+        "会话树、压缩、Steering/Follow-up、导出与分享"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "扩展者面",
+      "items": [
+        "TypeScript Extension 注册工具、命令、provider、钩子",
+        "Skills / Prompt Templates / Themes / Pi Packages"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "嵌入者面",
+      "items": [
+        "pi-ai 直接调 LLM；pi-agent-core 控制 Agent",
+        "pi-durable 提供崩溃恢复 Harness；pi-server + pi-protocol 远程暴露会话"
+      ]
+    }
+  ]
+}
