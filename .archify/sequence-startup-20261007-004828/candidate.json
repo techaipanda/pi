@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Pi Agent: Application Startup Sequence",
+    "subtitle": "From `pi` invocation to AgentSession handed to a run mode",
+    "output": "docs/agent-startup-sequence.html",
+    "viewBox": [1080, 696],
+    "column_fit": "spread",
+    "quality_profile": "showcase",
+    "locale": "en",
+    "repository": {
+      "url": "https://github.com/techaipanda/pi.git",
+      "revision": "f76b33ff4361d2fe8b00cae98462340d9777f304",
+      "link_mode": "local-only"
+    }
+  },
+  "participants": [
+    { "id": "shell", "type": "external", "label": "Shell", "sublabel": "user runs `pi …`", "sources": [{ "path": "packages/coding-agent/src/cli.ts", "line": 1, "end_line": 6, "label": "cli.ts (bin)" }] },
+    { "id": "cli", "type": "frontend", "label": "cli.ts", "sublabel": "bin entry", "sources": [{ "path": "packages/coding-agent/src/cli.ts", "line": 1, "end_line": 6, "label": "cli.ts" }] },
+    { "id": "main", "type": "frontend", "label": "main()", "sublabel": "parse + dispatch", "sources": [{ "path": "packages/coding-agent/src/main.ts", "line": 573, "end_line": 760, "label": "main()" }] },
+    { "id": "session_mgr", "type": "database", "label": "SessionMgr", "sublabel": "open JSONL", "sources": [{ "path": "packages/coding-agent/src/core/session-manager.ts", "line": 1, "end_line": 120, "label": "SessionManager" }] },
+    { "id": "services", "type": "backend", "label": "Services", "sublabel": "model+settings+res", "sources": [{ "path": "packages/coding-agent/src/core/agent-session-services.ts", "line": 135, "end_line": 210, "label": "createAgentSessionServices" }] },
+    { "id": "sdk", "type": "backend", "label": "SDK", "sublabel": "createAgentSession", "sources": [{ "path": "packages/coding-agent/src/core/sdk.ts", "line": 1, "end_line": 200, "label": "createAgentSession" }] },
+    { "id": "session", "type": "database", "label": "AgentSession", "sublabel": "session facade", "sources": [{ "path": "packages/coding-agent/src/core/agent-session.ts", "line": 1, "end_line": 200, "label": "AgentSession" }] },
+    { "id": "mode", "type": "frontend", "label": "Run Mode", "sublabel": "TUI / Print / RPC", "sources": [{ "path": "packages/coding-agent/src/modes/index.ts", "line": 1, "end_line": 16, "label": "modes/index.ts" }] }
+  ],
+  "segments": [
+    { "from": 180, "to": 250, "label": "Boot" },
+    { "from": 270, "to": 410, "label": "Assemble" },
+    { "from": 430, "to": 570, "label": "Build + Dispatch" }
+  ],
+  "messages": [
+    { "id": "invoke", "from": "shell", "to": "cli", "y": 200, "label": "exec node dist/bundle/cli.js", "variant": "default" },
+    { "id": "entry-call", "from": "cli", "to": "main", "y": 225, "label": "main(argv.slice(2))", "variant": "emphasis" },
+    { "id": "sm-call", "from": "main", "to": "session_mgr", "y": 285, "label": "createSessionManager(parsed, cwd)", "variant": "default" },
+    { "id": "sm-result", "from": "session_mgr", "to": "main", "y": 320, "label": "SessionManager + branch leaf", "variant": "return" },
+    { "id": "factory-step", "from": "main", "to": "services", "y": 350, "label": "createAgentSessionServices({cwd})", "variant": "emphasis" },
+    { "id": "services-built", "from": "services", "to": "main", "y": 380, "label": "ModelRuntime + Settings + ResourceLoader", "variant": "return" },
+    { "id": "sdk-call", "from": "main", "to": "sdk", "y": 460, "label": "createAgentSession(options)", "variant": "emphasis" },
+    { "id": "agent-built", "from": "sdk", "to": "session", "y": 488, "label": "new Agent(streamFn=streamSimple)", "variant": "default" },
+    { "id": "session-built", "from": "sdk", "to": "main", "y": 516, "label": "AgentSession facade", "variant": "return" },
+    { "id": "dispatch", "from": "main", "to": "mode", "y": 548, "label": "runRpcMode / InteractiveMode / runPrintMode", "variant": "emphasis" },
+    { "id": "subscribe", "from": "mode", "to": "session", "y": 580, "label": "session.subscribe(events)", "variant": "default" }
+  ],
+  "activations": [
+    { "participant": "cli", "from": 202, "to": 227, "type": "frontend" },
+    { "participant": "main", "from": 227, "to": 551, "type": "frontend" },
+    { "participant": "session_mgr", "from": 288, "to": 323, "type": "database" },
+    { "participant": "services", "from": 353, "to": 383, "type": "backend" },
+    { "participant": "sdk", "from": 463, "to": 519, "type": "backend" },
+    { "participant": "session", "from": 491, "to": 583, "type": "database" },
+    { "participant": "mode", "from": 551, "to": 583, "type": "frontend" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Boot (main.ts)",
+      "items": [
+        "cli.ts is the bin entry; calls main(process.argv.slice(2))",
+        "main() runs parseArgs(args) and runMigrations(cwd) up front",
+        "Auth / package / config / mcp subcommands exit early before this path"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Assemble",
+      "items": [
+        "createSessionManager opens or creates the JSONL session for the resolved cwd",
+        "createAgentSessionRuntime wraps a factory that builds cwd-bound services",
+        "Services are ModelRuntime, SettingsManager, DefaultResourceLoader (extensions/skills/themes)"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Build Session",
+      "items": [
+        "createAgentSession() in core/sdk.ts builds Agent with streamFn = modelRuntime.streamSimple",
+        "Wraps Agent in AgentSession; wires prepareRequest / NextTurn / finishTurn hooks",
+        "Returns AgentSessionRuntime holding the session + cwd-bound services"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Dispatch",
+      "items": [
+        "resolveAppMode picks rpc / interactive / print / json",
+        "Each mode owns only its I/O layer; all share the same AgentSession",
+        "Mode subscribes to session events and renders or forwards them"
+      ]
+    }
+  ]
+}

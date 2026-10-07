@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Pi Agent: Send-Message Core Sequence",
+    "subtitle": "From user prompt to LLM call, tool execution, and event back to UI",
+    "output": "docs/agent-message-sequence.html",
+    "viewBox": [1080, 638],
+    "column_fit": "spread",
+    "quality_profile": "showcase",
+    "locale": "en",
+    "repository": {
+      "url": "https://github.com/techaipanda/pi.git",
+      "revision": "f76b33ff4361d2fe8b00cae98462340d9777f304",
+      "link_mode": "local-only"
+    }
+  },
+  "participants": [
+    { "id": "user", "type": "external", "label": "User", "sources": [{ "path": "packages/coding-agent/src/modes/interactive/interactive-mode.ts", "line": 1138, "end_line": 1220, "label": "InteractiveMode.run" }] },
+    { "id": "session", "type": "frontend", "label": "AgentSession", "sources": [{ "path": "packages/coding-agent/src/core/agent-session.ts", "line": 1954, "end_line": 2074, "label": "AgentSession.prompt" }] },
+    { "id": "ext", "type": "backend", "label": "Extensions", "sources": [{ "path": "packages/coding-agent/src/core/extensions/runner.ts", "line": 1, "end_line": 80, "label": "ExtensionRunner" }] },
+    { "id": "agent", "type": "backend", "label": "Agent", "sources": [{ "path": "packages/agent/src/agent.ts", "line": 1, "end_line": 200, "label": "Agent class" }] },
+    { "id": "loop", "type": "backend", "label": "runLoop", "sources": [{ "path": "packages/agent/src/agent-loop.ts", "line": 163, "end_line": 290, "label": "runLoop" }] },
+    { "id": "stream", "type": "backend", "label": "streamSimple", "sources": [{ "path": "packages/coding-agent/src/core/sdk.ts", "line": 1, "end_line": 200, "label": "streamFn" }] },
+    { "id": "pi_ai", "type": "cloud", "label": "Provider", "sources": [{ "path": "packages/ai/src/compat.ts", "line": 1, "end_line": 100, "label": "streamSimple" }] },
+    { "id": "tool", "type": "database", "label": "Tool", "sources": [{ "path": "packages/coding-agent/src/core/tools/index.ts", "line": 1, "end_line": 100, "label": "tools" }] }
+  ],
+  "segments": [
+    { "from": 180, "to": 280, "label": "Session hooks" },
+    { "from": 300, "to": 430, "label": "Stream assistant" },
+    { "from": 450, "to": 520, "label": "Tools + emit" }
+  ],
+  "messages": [
+    { "id": "user-prompt", "from": "user", "to": "session", "y": 200, "label": "session.prompt(text, options)", "variant": "default" },
+    { "id": "ext-hooks", "from": "session", "to": "ext", "y": 228, "label": "input handlers, before_agent_start", "variant": "security" },
+    { "id": "ext-ok", "from": "ext", "to": "session", "y": 256, "label": "rewritten text / tools", "variant": "return" },
+    { "id": "agent-call", "from": "session", "to": "agent", "y": 320, "label": "agent.prompt(messages)", "variant": "emphasis" },
+    { "id": "loop-run", "from": "agent", "to": "loop", "y": 348, "label": "runLoop: prepareRequest + stream", "variant": "emphasis" },
+    { "id": "stream-call", "from": "loop", "to": "stream", "y": 378, "label": "streamSimple(model, context)", "variant": "default" },
+    { "id": "provider-call", "from": "stream", "to": "pi_ai", "y": 406, "label": "HTTP request, auth, headers", "variant": "default" },
+    { "id": "stream-events", "from": "pi_ai", "to": "loop", "y": 434, "label": "events + final AssistantMessage", "variant": "return" },
+    { "id": "tool-call", "from": "loop", "to": "tool", "y": 466, "label": "executeTool(args, onUpdate)", "variant": "emphasis" },
+    { "id": "tool-result", "from": "tool", "to": "loop", "y": 494, "label": "ToolResult (text / error)", "variant": "return" },
+    { "id": "emit", "from": "loop", "to": "session", "y": 510, "label": "AgentEvent stream", "variant": "default" }
+  ],
+  "activations": [
+    { "participant": "session", "from": 202, "to": 323, "type": "frontend" },
+    { "participant": "ext", "from": 231, "to": 259, "type": "backend" },
+    { "participant": "agent", "from": 323, "to": 351, "type": "backend" },
+    { "participant": "loop", "from": 351, "to": 513, "type": "backend" },
+    { "participant": "stream", "from": 381, "to": 409, "type": "backend" },
+    { "participant": "pi_ai", "from": 409, "to": 437, "type": "cloud" },
+    { "participant": "tool", "from": 469, "to": 497, "type": "database" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Session facade",
+      "items": [
+        "session.prompt() runs slash-command check, input handlers, skill/template expand",
+        "Validates model + auth, may pre-inject compaction before the new turn",
+        "before_agent_start extensions can edit system prompt and tool loadout"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Agent loop (pi-agent-core)",
+      "items": [
+        "declareToolChanges emits a system message for added/removed tools",
+        "prepareRequest projects context (compaction + virtual model resolution)",
+        "streamAssistantResponse consumes the stream until the assistant message ends"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "LLM call",
+      "items": [
+        "streamFn is modelRuntime.streamSimple, set in core/sdk.ts createAgentSession",
+        "Resolves auth.json credential, applies provider attribution headers",
+        "Returns AsyncIterable of AssistantMessageEvent with a final AssistantMessage"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Tool execution + events",
+      "items": [
+        "executeToolCalls runs prepared tools; nested calls go through the same pipeline",
+        "beforeToolCall / afterToolCall let extensions observe or rewrite results",
+        "Agent emits AgentEvent stream the session forwards to subscribed run modes"
+      ]
+    }
+  ]
+}
